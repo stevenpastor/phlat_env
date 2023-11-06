@@ -1,6 +1,42 @@
 # phlat_env
 PHLAT HLA allotyping
 
+## SINGULARITY installation on CHOP's Respublica
+
+* Load Singularity:
+
+```
+module load singularity
+```
+
+* Download/copy these files to your CWD and untag phlat:
+
+```
+cp -rf /mnt/isilon/maris_lab/target_nbl_ngs/steven/shared_files/index4phlat .
+cp -f /mnt/isilon/maris_lab/target_nbl_ngs/steven/shared_files/phlat_1.0.tar.gz .
+tar zxf phlat_1.0.tar.gz
+```
+
+* Pull the dockerhub image (will generate phlat_env.sif in CWD):
+
+```
+singularity pull phlat_env.sif docker://spastors/phlat_env:latest
+```
+
+* Run example command to see if works:
+
+```
+singularity exec phlat_env.sif python2 -O /usr/bin/phlat-release/dist/PHLAT.py -h
+```
+
+* Run it for real (note that only using 1 thread below, so change that):
+
+```
+singularity run --containall --bind /mnt/isilon/maris_lab/target_nbl_ngs/steven/projects/immunopeptidomics/testing/files_to_transfer:/usr/files_to_transfer phlat_env.sif python2 -O /usr/bin/phlat-release/dist/PHLAT.py -1 /usr/files_to_transfer/subset.fastq -index /usr/files_to_transfer/index4phlat -b2url /usr/bin/bowtie2 -tag "test_tag" -e /usr/bin/phlat-release -o /usr/files_to_transfer -p 1
+```
+
+---
+
 ## CONDA installation on CHOP's Respublica
 
 * assumes conda installed
