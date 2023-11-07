@@ -35,6 +35,16 @@ singularity exec phlat_env.sif python2 -O /usr/bin/phlat-release/dist/PHLAT.py -
 singularity run --containall --bind /mnt/isilon/maris_lab/target_nbl_ngs/steven/projects/immunopeptidomics/testing/files_to_transfer:/usr/files_to_transfer phlat_env.sif python2 -O /usr/bin/phlat-release/dist/PHLAT.py -1 /usr/files_to_transfer/subset.fastq -index /usr/files_to_transfer/index4phlat -b2url /usr/bin/bowtie2 -tag "test_tag" -e /usr/bin/phlat-release -o /usr/files_to_transfer -p 1
 ```
 
+* __NOTE:__ if you want to run your own fastq and index files, just change the binds but do not change the binds on the container side:
+
+```
+# i.e., can change this one:
+/mnt/isilon/maris_lab/target_nbl_ngs/steven/projects/immunopeptidomics/testing/files_to_transfer
+
+# but do not change this one:
+/usr/files_to_transfer
+```
+
 ---
 
 ## CONDA installation on CHOP's Respublica
