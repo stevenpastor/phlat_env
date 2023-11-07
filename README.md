@@ -15,6 +15,14 @@ module load singularity
 cp -rf /mnt/isilon/maris_lab/target_nbl_ngs/steven/shared_files/index4phlat .
 cp -f /mnt/isilon/maris_lab/target_nbl_ngs/steven/shared_files/phlat_1.0.tar.gz .
 tar zxf phlat_1.0.tar.gz
+
+# for testing below:
+cp -f /mnt/isilon/maris_lab/target_nbl_ngs/steven/shared_files/subset.fastq .
+
+# I have it all in one dir right now:
+mkdir -p files_to_transfer
+mv -f index4phlat files_to_transfer/index4phlat
+mv -f phlat_1.0 files_to_transfer/phlat_1.0
 ```
 
 * Pull the dockerhub image (will generate phlat_env.sif in CWD):
