@@ -40,7 +40,18 @@ singularity exec phlat_env.sif python2 -O /usr/bin/phlat-release/dist/PHLAT.py -
 * Run it for real (note that only using 1 thread below, so change that):
 
 ```
-singularity run --containall --bind /mnt/isilon/maris_lab/target_nbl_ngs/steven/projects/immunopeptidomics/testing/files_to_transfer:/usr/files_to_transfer phlat_env.sif python2 -O /usr/bin/phlat-release/dist/PHLAT.py -1 /usr/files_to_transfer/subset.fastq -index /usr/files_to_transfer/index4phlat -b2url /usr/bin/bowtie2 -tag "test_tag" -e /usr/bin/phlat-release -o /usr/files_to_transfer -p 1
+singularity run \
+    --containall \
+    --bind /mnt/isilon/maris_lab/target_nbl_ngs/steven/projects/immunopeptidomics/testing/files_to_transfer:/usr/files_to_transfer \
+    phlat_env.sif \
+    python2 -O /usr/bin/phlat-release/dist/PHLAT.py \
+    -1 /usr/files_to_transfer/subset.fastq \
+    -index /usr/files_to_transfer/index4phlat \
+    -b2url /usr/bin/bowtie2 \
+    -tag "test_tag" \
+    -e /usr/bin/phlat-release \
+    -o /usr/files_to_transfer \
+    -p 1
 ```
 
 * __NOTE:__ if you want to run your own fastq and index files, just change the binds but do not change the binds on the container side:
